@@ -1,0 +1,34 @@
+﻿@model SisInventarios.Model.users
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<section class="forms-section d-flex justify-content-center align-items-center vh-100">
+    <div class="form-container">
+        <h1 class="section-title text-center" style="color:#00d2ff;font-family:'Lucida Bright'">REGISTRO</h1>
+
+        <form asp-action="Register" method="post" class="form form-register">
+            <fieldset>
+                <legend class="text-center" style="color:#00d2ff;font-family:'Lucida Bright'">Por favor, completa los campos para registrarte.</legend>
+                <div class="input-block">
+                    <input type="text" name="nombre" placeholder="Nombre" required class="form-control" />
+                </div>
+
+                <div class="input-block">
+                    <input type="email" name="email" placeholder="Email" required class="form-control" />
+                </div>
+                <div class="input-block">
+                    <input type="password" name="password" placeholder="Contraseña" required class="form-control" />
+                </div>
+                <div class="input-block">
+                    <input type="password" name="confirmPassword" placeholder="Confirmar Contraseña" required class="form-control" />
+                </div>
+            </fieldset>
+            <button type="submit" class="btn btn-primary btn-register w-100">Registrar</button>
+        </form>
+        <div class="text-center mt-3">
+            <a href="@Url.Action("Login", "Account")">Ya tienes una cuenta? Inicia sesión aquí</a>
+        </div>
+    </div>
+</section>

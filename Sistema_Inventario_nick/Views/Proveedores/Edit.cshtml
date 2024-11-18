@@ -1,0 +1,35 @@
+﻿@model SisInventarios.Model.proveedores
+
+@{
+    ViewData["Title"] = "Editar Proveedor";
+}
+
+<h1 class="form-title">EDITAR PROVEEDOR</h1>
+
+<form asp-action="Edit" method="post" class="form-container">
+    <input type="hidden" asp-for="id" />
+    <div class="form-group">
+        <label asp-for="nombre" class="form-label"></label>
+        <input asp-for="nombre" class="form-control form-input" />
+        <span asp-validation-for="nombre" class="text-danger validation-message"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="direccion" class="form-label"></label>
+        <input asp-for="direccion" class="form-control form-input" />
+        <span asp-validation-for="direccion" class="text-danger validation-message"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="tipo_persona" class="form-label"></label>
+        <input asp-for="tipo_persona" class="form-control form-input" />
+        <span asp-validation-for="tipo_persona" class="text-danger validation-message"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="telefono" class="form-label"></label>
+        <input asp-for="telefono" class="form-control form-input" />
+        <span asp-validation-for="telefono" class="text-danger validation-message"></span>
+    </div>
+    <div class="button-group">
+        <button type="submit" class="btn btn-primary form-button">Guardar Cambios</button>
+        <a asp-action="Index" class="btn btn-secondary form-button">Cancelar</a>
+    </div>
+</form>

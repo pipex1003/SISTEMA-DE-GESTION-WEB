@@ -1,0 +1,41 @@
+﻿@model SisInventarios.Model.clientes
+
+@{
+    ViewData["Title"] = "Editar Cliente";
+}
+
+<h1 class="form-title">EDITAR CLIENTE</h1>
+
+@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<form asp-action="Edit" method="post" class="form-container">
+    <input type="hidden" asp-for="id" />
+    <div class="form-group">
+        <label asp-for="nombre" class="form-label"></label>
+        <input asp-for="nombre" class="form-control form-input" />
+        <span asp-validation-for="nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="direccion" class="form-label"></label>
+        <input asp-for="direccion" class="form-control form-input" />
+        <span asp-validation-for="direccion" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="tipo_persona" class="form-label"></label>
+        <select asp-for="tipo_persona" class="form-control form-input">
+            <option value="">Seleccione el tipo de persona</option>
+            <option value="Natural">Natural</option>
+            <option value="Juridica">Jurídica</option>
+        </select>
+        <span asp-validation-for="tipo_persona" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="telefono" class="form-label"></label>
+        <input asp-for="telefono" class="form-control form-input" />
+        <span asp-validation-for="telefono" class="text-danger"></span>
+    </div>
+    <div class="button-group">
+        <button type="submit" class="btn btn-success form-button">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary form-button">Cancelar</a>
+    </div>
+</form>

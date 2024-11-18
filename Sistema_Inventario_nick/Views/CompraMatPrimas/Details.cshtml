@@ -1,0 +1,35 @@
+﻿@model SisInventarios.Model.CompraMatPrima
+
+@{
+    ViewData["Title"] = "Detalles de Compra de Materia Prima";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Detalles de la Compra</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Proveedor</dt>
+            <dd class="col-sm-8">@Model.Proveedor?.nombre ?? "Sin asignar"</dd>
+
+            <dt class="col-sm-4">Materia Prima</dt>
+            <dd class="col-sm-8">@Model.MateriaPrima?.nombre ?? "Sin asignar"</dd>
+
+            <dt class="col-sm-4">Valor Unitario</dt>
+            <dd class="col-sm-8">@Model.valorUnitario ?? 0</dd>
+
+            <dt class="col-sm-4">Fecha de Compra</dt>
+            <dd class="col-sm-8">@Model.fechaCompra?.ToString("dd/MM/yyyy") ?? "Sin asignar"</dd>
+
+            <dt class="col-sm-4">Cantidad</dt>
+            <dd class="col-sm-8">@Model.cantidadCompra ?? 0</dd>
+
+            <dt class="col-sm-4">Total Compra</dt>
+            <dd class="col-sm-8">@Model.totalCompra ?? 0</dd>
+        </dl>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-secondary">Volver</a>

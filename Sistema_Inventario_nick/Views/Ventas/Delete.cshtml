@@ -1,0 +1,24 @@
+﻿@model SisInventarios.Model.venta
+
+@{
+    ViewData["Title"] = "Eliminar Venta";
+}
+
+<div class="card my-4 shadow">
+    <div class="card-header bg-danger text-white">
+        <h2>Eliminar Venta</h2>
+    </div>
+    <div class="card-body">
+        <p>¿Está seguro de que desea eliminar esta venta?</p>
+        <p><strong>ID:</strong> @Model.Id</p>
+        <p><strong>Fecha:</strong> @Model.FechaVenta.ToString("dd/MM/yyyy")</p>
+        <p><strong>Total:</strong> $@Model.TotalVenta</p>
+        <form asp-action="Delete" method="post">
+            <input type="hidden" name="Id" value="@Model.Id" />
+            <div class="d-flex justify-content-between mt-3">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

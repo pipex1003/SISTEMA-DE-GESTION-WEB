@@ -1,0 +1,38 @@
+﻿@model dynamic
+@{
+    ViewData["Title"] = "Confirmación de Venta";
+}
+
+<div class="card shadow mt-4">
+    <div class="card-header bg-success text-white">
+        <h2>Confirmación de Venta</h2>
+    </div>
+    <div class="card-body">
+        <h4>Cliente: @ViewBag.Cliente?.nombre</h4>
+        <p><strong>Fecha:</strong> @ViewBag.Venta?.FechaVenta</p>
+        <p><strong>Total:</strong> $@ViewBag.Venta?.TotalVenta</p>
+
+        <h5>Productos Vendidos:</h5>
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detalle in ViewBag.Detalles)
+                {
+                    <tr>
+                        <td>@detalle.nombre</td>
+                        <td>@detalle.cantidad</td>
+                        <td>$@detalle.precioTotalEmpanda</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<a asp-action="Index" class="btn btn-primary mt-3">Regresar al listado de ventas</a>

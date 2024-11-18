@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Sistema_Inventario_nick.props" />
+</Project>

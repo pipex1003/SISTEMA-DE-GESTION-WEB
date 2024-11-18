@@ -1,0 +1,48 @@
+﻿@model SisInventarios.Model.materias_primas
+
+@{
+    ViewData["Title"] = "Crear Materia Prima";
+}
+
+<h1 class="form-title">CREAR REGISTRO INVENTARIO</h1>
+
+<form asp-action="Create" method="post" class="form-container">
+    <div class="form-group">
+        <label asp-for="nombre" class="form-label"></label>
+        <input asp-for="nombre" class="form-control" />
+        <span asp-validation-for="nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="stock" class="form-label"></label>
+        <input asp-for="stock" class="form-control" type="number" />
+        <span asp-validation-for="stock" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="descripcion" class="form-label"></label>
+        <input asp-for="descripcion" class="form-control" />
+        <span asp-validation-for="descripcion" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="unidad_medida" class="form-label"></label>
+        <select asp-for="unidad_medida" class="form-control" required>
+            <option value="">Seleccione una unidad de medida</option>
+            @foreach (var unidad in ViewBag.UnidadesDeMedida)
+            {
+                <option value="@unidad">@unidad</option>
+            }
+        </select>
+        <span asp-validation-for="unidad_medida" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fecha_vencimiento" class="form-label"></label>
+        <input asp-for="fecha_vencimiento" class="form-control" type="date" />
+        <span asp-validation-for="fecha_vencimiento" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

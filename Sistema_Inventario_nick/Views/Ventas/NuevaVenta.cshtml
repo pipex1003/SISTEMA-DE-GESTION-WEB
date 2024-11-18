@@ -1,0 +1,38 @@
+﻿@model SisInventarios.Model.venta
+@{
+    ViewData["Title"] = "Nueva Venta";
+}
+
+<h2 class="text-center my-4">Nueva Venta</h2>
+
+<form asp-action="RegistrarVenta" method="post" class="p-4 shadow-sm bg-light rounded form-container">
+    <div class="form-group mb-3">
+        <label for="clienteId" class="form-label">Seleccione un Cliente:</label>
+        <select id="clienteId" name="clienteId" class="form-select" required>
+            <option value="">Seleccione...</option>
+            @foreach (var cliente in ViewBag.Clientes)
+            {
+                <option value="@cliente.id">@cliente.nombre</option>
+            }
+        </select>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="productos" class="form-label">Seleccione Productos:</label>
+        <div id="productos-container">
+            @foreach (var producto in ViewBag.Productos)
+            {
+                <div class="producto-item mb-2">
+                    <input type="checkbox" name="productoIds" value="@producto.id" class="form-check-input" />
+                    <label class="form-check-label">@producto.nombre</label>
+                    <span class="badge bg-primary">Precio: $@producto.valorUnitario</span>
+                    <span class="badge bg-warning text-dark">Stock: @producto.cantidadDispo</span>
+                    <input type="number" name="cantidades" placeholder="Cantidad" min="1" max="@producto.cantidadDispo" class="form-control mt-1" />
+                </div>
+            }
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar Venta</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

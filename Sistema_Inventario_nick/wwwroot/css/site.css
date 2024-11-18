@@ -1,0 +1,330 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+.clogin {
+    font-family: Arial, sans-serif;
+    background-color: #1e1c1c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background: #fff; /* Fondo blanco para el contenedor de login */
+    width: 300px; /* Ajusta el ancho a un tamaño más pequeño */
+    height: 350px; /* Mantiene la altura igual al ancho para ser cuadrado */
+    padding: 20px; /* Ajusta el espaciado interno */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    text-align: center; /* Centrar texto en el contenedor */
+    display: flex; /* Usar flexbox para centrar elementos */
+    flex-direction: column; /* Organizar elementos en columna */
+    justify-content: center; /* Centrar verticalmente */
+    align-items: center; /* Centrar horizontalmente */
+}
+
+
+
+input[type="text"] {
+    width: 100%; /* Ancho completo para los campos de entrada */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espacio inferior */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+input[type="email"] {
+    width: 100%; /* Ancho completo para los campos de entrada */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espacio inferior */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+input[type="password"] {
+    width: 100%; /* Ancho completo para los campos de entrada */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 15px; /* Espacio inferior */
+    border: 1px solid #ccc; /* Borde gris claro */
+    border-radius: 5px; /* Bordes redondeados */
+}
+
+button[type="submit"] {
+    background-color: #00d2ff; /* Color de fondo del botón */
+    color: #fff; /* Color del texto en el botón */
+    padding: 10px 20px; /* Espaciado interno en el botón */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+}
+
+p {
+    margin-top: 15px; /* Margen superior para el párrafo */
+}
+
+a {
+    color: #00d2ff; /* Color del enlace */
+    text-decoration: none; /* Sin subrayado */
+}
+
+    a:hover {
+        text-decoration: underline; /* Subrayar al pasar el mouse */
+    }
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.card-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.card-body img {
+    width: 100px; /* Tamaño de la imagen */
+    height: 100px;
+}
+
+h5 {
+    margin-top: 0;
+    font-weight: bold;
+}
+.lineinfo{
+    margin: 5px 0;
+    font-size: 1rem;
+}
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ff5722; /* Color naranja */
+}
+
+.form-label {
+    font-size: 1.1rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.form-input {
+    font-size: 1rem;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+    .form-input:focus {
+        border-color: #ff5722;
+        box-shadow: 0 0 5px rgba(255, 87, 34, 0.5);
+    }
+
+.form-button {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.validation-message {
+    font-size: 0.9rem;
+    color: red;
+    margin-top: 5px;
+}
+    .form-container {
+        padding: 15px;
+    }
+
+    .form-title {
+        font-size: 1.5rem;
+    }
+
+    .form-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+
+.delete-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #dc3545; /* Color rojo */
+}
+
+.delete-confirmation {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.provider-info {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8d7da; /* Fondo claro para resaltar */
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+dt {
+    font-weight: 600;
+    color: #721c24; /* Color para etiquetas */
+}
+
+dd {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    color: #212529; /* Color de texto más oscuro */
+}
+
+.confirm-delete-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.delete-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaciado entre botones */
+}
+
+.delete-btn {
+    padding: 10px 25px; /* Aumenta el padding para más área clicable */
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+.cancel-btn {
+    padding: 10px 25px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .delete-title {
+        font-size: 1.5rem;
+    }
+
+    .delete-confirmation {
+        font-size: 1.2rem;
+    }
+
+    .btn {
+        width: 100%; /* Botones ocupan todo el ancho */
+        margin-bottom: 10px;
+    }
+
+    .delete-button-group {
+        flex-direction: column;
+    }
+}
+
+.providers-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #dc3545; /* Color para el título */
+}
+
+.providers-table {
+    width: 60%;
+    margin: 0 auto;
+    background-color: #fff; /* Fondo blanco para la tabla */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+    background-color: #f8d7da; /* Color de fondo para el encabezado */
+    color: #721c24; /* Color para el texto del encabezado */
+}
+
+.table-row {
+    transition: background-color 0.3s; /* Efecto de transición */
+}
+
+    .table-row:hover {
+        background-color: #f1f1f1; /* Cambio de color al pasar el mouse */
+    }
+
+.btn-warning {
+    margin-right: 5px; /* Espacio entre botones */
+}
+
+.create-provider-btn {
+    display: block; /* Asegúrate de que sea un bloque */
+    width: 200px; /* Define un ancho fijo o puedes usar un porcentaje */
+    margin: 20px auto; /* Centrado y separación de la tabla */
+    text-align: center; /* Centrado y separación de la tabla */
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .providers-title {
+        font-size: 1.5rem;
+    }
+
+    .table {
+        font-size: 0.9rem; /* Disminuir el tamaño de fuente en móviles */
+    }
+}
+.producto-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 200px;
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.producto-imagen img {
+    width: 100%;
+    height: auto;
+}
+
+.producto-info h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+}

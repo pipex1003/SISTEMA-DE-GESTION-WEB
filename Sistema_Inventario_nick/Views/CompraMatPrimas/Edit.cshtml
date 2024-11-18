@@ -1,0 +1,62 @@
+﻿@model SisInventarios.Model.CompraMatPrima
+
+@{
+    ViewData["Title"] = "Editar Compra de Materia Prima";
+}
+
+<h2 class="form-title">@ViewData["Title"]</h2>
+
+<form asp-action="Edit" method="post" class="form-container">
+    <input type="hidden" asp-for="id" />
+
+    <div class="form-group">
+        <label asp-for="id_proveedor" class="form-label"></label>
+        <select asp-for="id_proveedor" class="form-control">
+            <option value="">Seleccione un proveedor</option>
+            @if (ViewData["id_proveedor"] is SelectList proveedoresList)
+            {
+                foreach (var item in proveedoresList)
+                {
+                    <option value="@item.Value" selected="@(item.Value == Model.id_proveedor.ToString())">@item.Text</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="id_proveedor" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="id_matPri" class="form-label"></label>
+        <select asp-for="id_matPri" class="form-control">
+            <option value="">Seleccione una materia prima</option>
+            @if (ViewData["id_matPri"] is SelectList materiasList)
+            {
+                foreach (var item in materiasList)
+                {
+                    <option value="@item.Value" selected="@(item.Value == Model.id_matPri.ToString())">@item.Text</option>
+                }
+            }
+        </select>
+        <span asp-validation-for="id_matPri" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="valorUnitario" class="form-label"></label>
+        <input asp-for="valorUnitario" class="form-control" type="number" />
+        <span asp-validation-for="valorUnitario" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="fechaCompra" class="form-label"></label>
+        <input asp-for="fechaCompra" class="form-control" type="date" />
+        <span asp-validation-for="fechaCompra" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="cantidadCompra" class="form-label"></label>
+        <input asp-for="cantidadCompra" class="form-control" type="number" />
+        <span asp-validation-for="cantidadCompra" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

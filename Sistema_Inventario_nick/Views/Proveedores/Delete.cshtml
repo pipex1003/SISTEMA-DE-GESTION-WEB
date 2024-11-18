@@ -1,0 +1,19 @@
+﻿@model SisInventarios.Model.proveedores
+
+<div class="container mt-5">
+    <h1 class="text-danger">Eliminar Proveedor</h1>
+    <h3>¿Estás seguro de que deseas eliminar este proveedor?</h3>
+    <div class="card mt-3">
+        <div class="card-body">
+            <p><strong>Nombre:</strong> @Model.nombre</p>
+            <p><strong>Dirección:</strong> @Model.direccion</p>
+            <p><strong>Tipo de Persona:</strong> @Model.tipo_persona</p>
+            <p><strong>Teléfono:</strong> @Model.telefono</p>
+        </div>
+    </div>
+    <form asp-action="DeleteConfirmed" method="post" class="mt-3">
+        <input type="hidden" asp-for="id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

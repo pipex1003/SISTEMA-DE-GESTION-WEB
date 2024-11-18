@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SisInventarios.Model.productos>
+
+@{
+    ViewData["Title"] = "Lista de Productos";
+}
+
+<h2 class="providers-title">Lista de Productos</h2>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+
+
+<table class="table table-striped providers-table">
+    <thead>
+        <tr class="table-header">
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Valor Unitario</th>
+            <th>Cantidad Disponible</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var producto in Model)
+        {
+            <tr class="table-row">
+                <td>@producto.nombre</td>
+                <td>@producto.descripcionPro</td>
+                <td>@producto.valorUnitario:C</td>
+                <td>@producto.cantidadDispo</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@producto.id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@producto.id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary create-provider-btn">Crear Nuevo Producto</a>
+</p>

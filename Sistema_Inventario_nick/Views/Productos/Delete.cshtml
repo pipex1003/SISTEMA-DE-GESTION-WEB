@@ -1,0 +1,29 @@
+﻿@model SisInventarios.Model.productos
+
+@{
+    ViewData["Title"] = "Eliminar Producto";
+}
+
+<h2>Eliminar Producto</h2>
+
+<p>¿Estás seguro de que deseas eliminar este producto?</p>
+
+<dl class="row">
+    <dt class="col-sm-3">Nombre</dt>
+    <dd class="col-sm-9">@Model.nombre</dd>
+
+    <dt class="col-sm-3">Descripción</dt>
+    <dd class="col-sm-9">@Model.descripcionPro</dd>
+
+    <dt class="col-sm-3">Valor Unitario</dt>
+    <dd class="col-sm-9">@Model.valorUnitario:C</dd>
+
+    <dt class="col-sm-3">Cantidad Disponible</dt>
+    <dd class="col-sm-9">@Model.cantidadDispo</dd>
+</dl>
+
+<form asp-action="DeleteConfirmed" method="post">
+    <input type="hidden" asp-for="id" />
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>

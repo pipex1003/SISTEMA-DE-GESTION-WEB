@@ -1,0 +1,49 @@
+﻿@model IEnumerable<SisInventarios.Model.materias_primas>
+
+@{
+    ViewData["Title"] = "Materias Primas";
+}
+
+<h1 class="providers-title">INVENTARIO MATERIAS PRIMAS</h1>
+
+<table class="table table-striped providers-table">
+    <thead>
+        <tr class="table-header">
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Stock</th>
+            <th>Descripción</th>
+            <th>Unidad de Medida</th>
+            <th>Fecha de Vencimiento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var materiaPrima in Model)
+            {
+                <tr>
+                    <td>@materiaPrima.id</td>
+                    <td>@materiaPrima.nombre</td>
+                    <td>@materiaPrima.stock</td>
+                    <td>@materiaPrima.descripcion</td>
+                    <td>@materiaPrima.unidad_medida</td>
+                    <td>@materiaPrima.fecha_vencimiento?.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@materiaPrima.id" class="btn btn-warning">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@materiaPrima.id" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="7" class="text-center">No hay materias primas disponibles.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary create-provider-btn">Crear Materia Prima</a>

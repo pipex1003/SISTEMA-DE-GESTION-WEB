@@ -1,0 +1,45 @@
+﻿@model SisInventarios.Model.productos
+
+@{
+    ViewData["Title"] = "Editar Producto";
+}
+
+<h2 class="form-title">Editar Producto</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}
+
+<form asp-action="Edit" method="post" class="form-container">
+    <input type="hidden" asp-for="id" />
+    <div class="form-group">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" asp-for="nombre" class="form-control" placeholder="Ingrese el nombre del producto" />
+        <span asp-validation-for="nombre" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="descripcionPro" class="form-label">Descripción</label>
+        <textarea asp-for="descripcionPro" class="form-control" placeholder="Ingrese una descripción del producto"></textarea>
+        <span asp-validation-for="descripcionPro" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="valorUnitario" class="form-label">Valor Unitario</label>
+        <input type="number" asp-for="valorUnitario" class="form-control" placeholder="Ingrese el valor unitario del producto" />
+        <span asp-validation-for="valorUnitario" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label for="cantidadDispo" class="form-label">Cantidad Disponible</label>
+        <input type="number" asp-for="cantidadDispo" class="form-control" placeholder="Ingrese la cantidad disponible del producto" />
+        <span asp-validation-for="cantidadDispo" class="text-danger"></span>
+    </div>
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation-unobtrusive@3.2.0/dist/jquery.validate.unobtrusive.min.js"></script>
+}

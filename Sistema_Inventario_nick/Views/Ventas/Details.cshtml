@@ -1,0 +1,40 @@
+﻿@model SisInventarios.Model.venta
+
+@{
+    ViewData["Title"] = "Detalles de Venta";
+}
+
+<div class="card my-4 shadow">
+    <div class="card-header bg-dark text-white">
+        <h3>Detalles de Venta</h3>
+    </div>
+    <div class="card-body">
+        <p><strong>ID:</strong> @ViewBag.Venta.Id</p>
+        <p><strong>Fecha:</strong> @ViewBag.Venta.FechaVenta</p>
+        <p><strong>Total:</strong> $@ViewBag.Venta.TotalVenta</p>
+        <p><strong>Cliente:</strong> @ViewBag.Cliente?.nombre</p>
+    </div>
+</div>
+
+<h4 class="mt-4">Productos Vendidos</h4>
+<table class="table table-bordered table-hover">
+    <thead class="table-secondary">
+        <tr>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detalle in ViewBag.Detalles)
+        {
+            <tr>
+                <td>@detalle.nombre</td>
+                <td>@detalle.cantidad</td>
+                <td>$@detalle.precioTotalEmpanda</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Index" class="btn btn-secondary mt-3">Volver al listado</a>

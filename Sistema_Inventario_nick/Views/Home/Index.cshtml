@@ -1,0 +1,137 @@
+﻿@{
+    ViewData["Title"] = "Informes y Gráficos";
+}
+
+<div class="container my-4">
+    <h2 class="text-center mb-4">Informes y Gráficos</h2>
+
+    <!-- Filtros -->
+    <form id="formFiltros" class="row g-3 mb-4">
+        <div class="col-md-3">
+            <label for="tipo" class="form-label">Tipo:</label>
+            <select id="tipo" class="form-select">
+                <option value="Compras">Compras</option>
+                <option value="Ventas">Ventas</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label for="fechaInicio" class="form-label">Fecha Inicio:</label>
+            <input type="date" id="fechaInicio" class="form-control" required />
+        </div>
+        <div class="col-md-3">
+            <label for="fechaFin" class="form-label">Fecha Fin:</label>
+            <input type="date" id="fechaFin" class="form-control" required />
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button type="button" id="btnGenerar" class="btn btn-primary w-100">Generar Informe</button>
+        </div>
+    </form>
+
+    <!-- Tabla de resultados -->
+    <div class="table-responsive">
+        <table id="tablaResultados" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Detalle</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="3" class="text-center">No se ha generado ningún informe.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Gráfico -->
+    <h3 class="text-center mt-5">Gráfico de Totales</h3>
+    <canvas id="graficoTotales" class="w-100"></canvas>
+</div>
+
+<!-- Agrega Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const btnGenerar = document.getElementById('btnGenerar');
+    const tablaResultados = document.getElementById('tablaResultados').querySelector('tbody');
+    const graficoCanvas = document.getElementById('graficoTotales').getContext('2d');
+    let grafico;
+
+    btnGenerar.addEventListener('click', async () => {
+        const tipo = document.getElementById('tipo').value;
+        const fechaInicio = document.getElementById('fechaInicio').value;
+        const fechaFin = document.getElementById('fechaFin').value;
+
+        if (!fechaInicio || !fechaFin) {
+            alert("Por favor, selecciona un rango de fechas.");
+            return;
+        }
+
+        // Generar informe
+        try {
+            const response = await fetch(`/Home/GenerarInforme?tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+            const result = await response.json();
+
+            if (!result.success) {
+                alert(result.message);
+                tablaResultados.innerHTML = '<tr><td colspan="3" class="text-center">No se encontraron registros.</td></tr>';
+                if (grafico) grafico.destroy();
+                return;
+            }
+
+            const datos = result.datos;
+
+            // Actualizar tabla
+            tablaResultados.innerHTML = '';
+            datos.forEach(d => {
+                tablaResultados.innerHTML += `
+                        <tr>
+                            <td>${new Date(d.FechaCompra || d.FechaVenta).toLocaleDateString()}</td>
+                            <td>${d.Proveedor || d.Cliente}</td>
+                            <td>$${d.Total.toFixed(2)}</td>
+                        </tr>
+                    `;
+            });
+
+            // Generar gráfico
+            const graficoResponse = await fetch(`/Home/GenerarGrafico?tipo=${tipo}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`);
+            const graficoResult = await graficoResponse.json();
+
+            if (!graficoResult.success) {
+                alert(graficoResult.message);
+                if (grafico) grafico.destroy();
+                return;
+            }
+
+            const labels = graficoResult.datos.map(d => new Date(d.Fecha).toLocaleDateString());
+            const data = graficoResult.datos.map(d => d.Total);
+
+            if (grafico) grafico.destroy();
+
+            grafico = new Chart(graficoCanvas, {
+                type: 'line',
+                data: {
+                    labels,
+                    datasets: [{
+                        label: `Totales de ${tipo}`,
+                        data,
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 2,
+                        fill: false,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: true },
+                    }
+                }
+            });
+        } catch (error) {
+            console.error("Error generando el informe o gráfico:", error);
+            alert("Ocurrió un error al generar el informe. Por favor, verifica los datos y vuelve a intentarlo.");
+        }
+    });
+</script>

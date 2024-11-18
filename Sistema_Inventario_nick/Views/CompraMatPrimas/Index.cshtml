@@ -1,0 +1,51 @@
+﻿@model IEnumerable<SisInventarios.Model.CompraMatPrima>
+
+@{
+    ViewData["Title"] = "Compras de Materias Primas";
+}
+
+<h1 class="providers-title">@ViewData["Title"]</h1>
+
+<table class="table table-striped providers-table">
+    <thead>
+        <tr class="table-header">
+            <th>ID</th>
+            <th>Proveedor</th>
+            <th>Materia Prima</th>
+            <th>Valor Unitario</th>
+            <th>Fecha de Compra</th>
+            <th>Cantidad</th>
+            <th>Total Compra</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var compra in Model)
+            {
+                <tr class="table-row">
+                    <td>@compra.id</td>
+                    <td>@(compra.Proveedor?.nombre ?? string.Empty)</td>
+                    <td>@(compra.MateriaPrima?.nombre ?? string.Empty)</td>
+                    <td>@(compra.valorUnitario.HasValue ? compra.valorUnitario.Value.ToString() : string.Empty)</td>
+                    <td>@(compra.fechaCompra.HasValue ? compra.fechaCompra.Value.ToString("dd/MM/yyyy") : string.Empty)</td>
+                    <td>@(compra.cantidadCompra.HasValue ? compra.cantidadCompra.Value.ToString() : string.Empty)</td>
+                    <td>@(compra.totalCompra.HasValue ? compra.totalCompra.Value.ToString() : string.Empty)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@compra.id" class="btn btn-warning">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@compra.id" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="8" class="text-center">No hay compras registradas.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary create-provider-btn">Nueva Compra</a>

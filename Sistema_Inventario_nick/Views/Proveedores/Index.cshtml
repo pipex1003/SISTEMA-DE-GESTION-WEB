@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SisInventarios.Model.proveedores>
+
+@{
+    ViewData["Title"] = "Proveedores";
+}
+
+<h1 class="providers-title">PROVEEDORES</h1>
+
+<table class="table table-striped providers-table">
+    <thead>
+        <tr class="table-header">
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Dirección</th>
+            <th>Tipo Persona</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null && Model.Any())
+        {
+            foreach (var proveedor in Model)
+            {
+                <tr class="table-row">
+                    <td>@proveedor.id</td>
+                    <td>@proveedor.nombre</td>
+                    <td>@proveedor.direccion</td>
+                    <td>@proveedor.tipo_persona</td>
+                    <td>@proveedor.telefono</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@proveedor.id" class="btn btn-warning">Editar</a>
+                        <a asp-action="Delete" asp-route-id="@proveedor.id" class="btn btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="6" class="text-center">No hay proveedores disponibles.</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="Create" class="btn btn-primary create-provider-btn">Crear Proveedor</a>

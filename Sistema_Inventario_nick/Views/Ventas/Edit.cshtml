@@ -1,0 +1,23 @@
+﻿@model SisInventarios.Model.venta
+
+@{
+    ViewData["Title"] = "Editar Venta";
+}
+
+<h2 class="form-title">Editar Venta</h2>
+
+<form asp-action="Edit" method="post" class="p-4 shadow-sm bg-light rounded form-container">
+    <input type="hidden" name="Id" value="@Model.Id" />
+    <div class="form-group mb-3">
+        <label for="FechaVenta" class="form-label">Fecha:</label>
+        <input type="date" id="FechaVenta" name="FechaVenta" value="@Model.FechaVenta.ToString("yyyy-MM-dd")" class="form-control" required />
+    </div>
+    <div class="form-group mb-3">
+        <label for="TotalVenta" class="form-label">Total:</label>
+        <input type="text" id="TotalVenta" name="TotalVenta" value="@Model.TotalVenta" class="form-control" required />
+    </div>
+    <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-success">Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+    </div>
+</form>

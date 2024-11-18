@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Listado de Ventas y Pedidos";
+}
+
+<h2 class="providers-title">Listado de Ventas y Pedidos</h2>
+
+<table class="table table-striped providers-table">
+    <thead>
+        <tr class="table-header">
+            <th>ID Venta</th>
+            <th>Fecha</th>
+            <th>Total</th>
+            <th>Cliente</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in ViewBag.VentasYPedidos)
+        {
+            <tr>
+                <td>@item.Venta.Id</td>
+                <td>@item.Venta.FechaVenta.ToString("dd/MM/yyyy")</td>
+                <td>$@item.Venta.TotalVenta</td>
+                <td>@item.Cliente</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Venta.Id" class="btn btn-info btn-sm">Detalles</a>
+                    <a asp-action="Edit" asp-route-id="@item.Venta.Id" class="btn btn-warning btn-sm">Editar</a>
+                    <a asp-action="Delete" asp-route-id="@item.Venta.Id" class="btn btn-danger btn-sm">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="NuevaVenta" class="btn btn-primary create-provider-btn">Registrar Nueva Venta</a>

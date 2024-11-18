@@ -1,0 +1,34 @@
+﻿@model SisInventarios.Model.materias_primas
+
+@{
+    ViewData["Title"] = "Eliminar Materia Prima";
+}
+<div class="container mt-5">
+    <h2 class="text-danger">@ViewData["Title"]</h2>
+<h3>¿Estás seguro de que deseas eliminar esta materia prima?</h3>
+<div class="card mt-3">
+    <div class="card-body">
+        <h4>Detalles de la Materia Prima</h4>
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.nombre)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.nombre)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.stock)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.stock)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.descripcion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.descripcion)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.unidad_medida)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.unidad_medida)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.fecha_vencimiento)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.fecha_vencimiento)</dd>
+        </dl>
+        <form asp-action="DeleteConfirmed" asp-route-id="@Model.id" method="post">
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+        </form>
+         </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<body class="clogin">
+    <div class="login-container">
+        <img src="~/images/LOGO.jpg" alt="Logo Nick Empanadas" class="img-fluid my-4" style="max-width: 200px; height: auto;" />
+        <h2 style="font-family:'Lucida Bright'">INICIAR SESION</h2>
+        <form asp-action="Login" method="post" class="form form-login">
+            <fieldset>
+                <div class="input-block">
+                    <label for="login-email">E-mail</label>
+                    <input id="login-email" name="email" type="email" required placeholder="Usuario">
+                </div>
+                <div class="input-block" style="margin-bottom: 20px;">
+                    <label for="login-password">Contraseña</label>
+                    <input id="login-password" name="password" type="password" required placeholder="Contraseña">
+                </div>
+                <div>
+                    @if (ViewBag.Error != null)
+                    {
+                        <p style="color:red;">@ViewBag.Error</p>
+                    }
+                </div>
+            </fieldset>
+            <button type="submit">Ingresar</button>
+        </form>
+        <p style="color:white">¿Aún no tienes una cuenta? <a href="@Url.Action("Register", "Account")">Regístrate aquí</a></p>
+    </div>
+</body>
